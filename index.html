@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wedding of Avre & Dhila</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'cormorant': ['Cormorant', 'serif'],
+                        'lato': ['Lato', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary': '#2c2c2c',
+                        'secondary': '#8b7355',
+                        'accent': '#d4a574',
+                        'light-bg': '#f8f6f3',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-lato text-gray-800 overflow-x-hidden">
+    <!-- Hero Section -->
+    <section id="hero" class="h-screen flex items-center justify-center text-white text-center relative bg-cover bg-center" style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1920') center/cover;">
+        <div class="z-10">
+            <div>
+                <p class="text-sm tracking-[3px] mb-4 font-light">THE WEDDING OF</p>
+                <h1 class="font-cormorant text-6xl md:text-7xl my-4 font-light flex flex-col gap-2">
+                    <span>Avre</span>
+                    <span class="text-3xl opacity-80">&</span>
+                    <span>Dhila</span>
+                </h1>
+                <p class="text-xl tracking-[5px] my-8">31 · 05 · 25</p>
+            </div>
+            <button class="mt-8 px-10 py-4 bg-white text-primary border-0 text-base cursor-pointer tracking-wider transition-all duration-300 hover:bg-accent hover:text-white hover:-translate-y-0.5" onclick="scrollToSection('hero2')">
+                Open Invitation
+            </button>
+        </div>
+    </section>
+
+    <!-- Hero 2 - Openers & Music -->
+    <section id="hero2" class="py-20 px-5 bg-light-bg text-center">
+        <div class="max-w-6xl mx-auto px-5">
+            <div class="text-3xl mb-8 text-secondary">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+            <p class="max-w-2xl mx-auto mb-8 text-lg leading-relaxed text-gray-600">
+                Kami mengundang Bapak/Ibu/Saudara/i untuk hadir pada acara pernikahan kami
+            </p>
+            <div class="mt-8">
+                <button id="musicToggle" class="bg-primary text-white border-0 px-6 py-2.5 cursor-pointer inline-flex items-center gap-2.5 transition-all duration-300 hover:bg-secondary">
+                    <span class="text-lg">♪</span>
+                    <span class="music-text">Music On</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quran Verse Section -->
+    <section id="quran" class="py-20 px-5 bg-white">
+        <div class="max-w-6xl mx-auto px-5">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="text-3xl leading-loose mb-8 text-secondary" dir="rtl">
+                    وَمِنْ ءَايَٰتِهِۦٓ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَٰجًا لِّتَسْكُنُوٓا۟ إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِى ذَٰلِكَ لَـَٔايَٰتٍ لِّقَوْمٍ يَتَفَكَّرُونَ
+                </div>
+                <p class="text-base leading-relaxed mb-4 text-gray-600 italic">
+                    "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."
+                </p>
+                <p class="text-sm text-gray-800 font-semibold">Q.S. Ar-Rum: 21</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Groom Section -->
+    <section id="groom" class="py-20 px-5 bg-light-bg">
+        <div class="max-w-6xl mx-auto px-5">
+            <div class="max-w-lg mx-auto text-center">
+                <div class="mb-8">
+                    <div class="w-72 h-72 mx-auto bg-gray-300 flex items-center justify-center rounded-full overflow-hidden">
+                        <span class="text-gray-500 text-sm">Groom Photo</span>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="font-cormorant text-5xl mb-2 text-primary">Avre Barra</h2>
+                    <p class="text-lg mb-6 text-gray-600">Avre Barra Kurniawan</p>
+                    <p class="text-sm mb-2 text-gray-600">Putra dari</p>
+                    <p class="text-base text-gray-800">Bapak Ahmad & Ibu Siti</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bride Section -->
+    <section id="bride" class="py-20 px-5 bg-white">
+        <div class="max-w-6xl mx-auto px-5">
+            <div class="max-w-lg mx-auto text-center">
+                <div class="mb-8">
+                    <div class="w-72 h-72 mx-auto bg-gray-300 flex items-center justify-center rounded-full overflow-hidden">
+                        <span class="text-gray-500 text-sm">Bride Photo</span>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="font-cormorant text-5xl mb-2 text-primary">Dhila Zakiyah</h2>
+                    <p class="text-lg mb-6 text-gray-600">Rifatus Zakiyah</p>
+                    <p class="text-sm mb-2 text-gray-600">Putri dari</p>
+                    <p class="text-base text-gray-800">Bapak Rahman & Ibu Aminah</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Details Section -->
+    <section id="event" class="py-20 px-5 bg-white">
+        <div class="max-w-6xl mx-auto px-5">
+            <h2 class="text-center font-cormorant text-5xl mb-12 text-primary">Acara</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div class="bg-light-bg p-8 text-center border border-gray-200">
+                    <h3 class="font-cormorant text-3xl mb-6 text-primary">Akad Nikah</h3>
+                    <div class="mb-6">
+                        <p class="text-base mb-2 font-semibold">Sabtu, 31 Mei 2025</p>
+                        <p class="text-sm mb-4 text-gray-600">09:00 - 11:00 WIB</p>
+                        <p class="text-sm leading-relaxed text-gray-600">
+                            <strong>Lokasi</strong><br>
+                            Masjid Agung Jakarta<br>
+                            Jl. Raya Jakarta No. 123
+                        </p>
+                    </div>
+                    <button class="px-8 py-2.5 bg-primary text-white border-0 cursor-pointer transition-all duration-300 hover:bg-secondary" onclick="openLocation()">
+                        Lihat Lokasi
+                    </button>
+                </div>
+
+                <div class="bg-light-bg p-8 text-center border border-gray-200">
+                    <h3 class="font-cormorant text-3xl mb-6 text-primary">Resepsi</h3>
+                    <div class="mb-6">
+                        <p class="text-base mb-2 font-semibold">Sabtu, 31 Mei 2025</p>
+                        <p class="text-sm mb-4 text-gray-600">13:00 - 16:00 WIB</p>
+                        <p class="text-sm leading-relaxed text-gray-600">
+                            <strong>Lokasi</strong><br>
+                            Grand Ballroom Hotel Borobudur<br>
+                            Jl. Lapangan Banteng Selatan
+                        </p>
+                    </div>
+                    <button class="px-8 py-2.5 bg-primary text-white border-0 cursor-pointer transition-all duration-300 hover:bg-secondary" onclick="openLocation()">
+                        Lihat Lokasi
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 px-5 bg-light-bg">
+        <div class="max-w-6xl mx-auto px-5">
+            <h2 class="text-center font-cormorant text-5xl mb-12 text-primary">Gallery</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <div class="aspect-[4/5] overflow-hidden">
+                    <div class="w-full h-full bg-gray-300 flex items-center justify-center">
+                        <span class="text-gray-500 text-sm">Couple Photo</span>
+                    </div>
+                </div>
+                <div class="aspect-[4/5] overflow-hidden">
+                    <div class="w-full h-full bg-gray-300 flex items-center justify-center">
+                        <span class="text-gray-500 text-sm">Photo 2</span>
+                    </div>
+                </div>
+                <div class="aspect-[4/5] overflow-hidden">
+                    <div class="w-full h-full bg-gray-300 flex items-center justify-center">
+                        <span class="text-gray-500 text-sm">Photo 3</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer id="footer" class="py-20 pb-10 bg-primary text-white text-center">
+        <div class="max-w-6xl mx-auto px-5">
+            <div>
+                <p class="leading-relaxed mb-8 opacity-90">
+                    Merupakan suatu kehormatan dan kebahagiaan bagi kami<br>
+                    apabila Bapak/Ibu/Saudara/i berkenan hadir<br>
+                    untuk memberikan do'a restu kepada kami.
+                </p>
+                <div class="font-cormorant text-3xl my-8">
+                    <p>Avre & Dhila</p>
+                </div>
+                <p class="mt-8 opacity-70 text-sm">Terima Kasih</p>
+            </div>
+        </div>
+    </footer>
+
+    <audio id="bgMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
