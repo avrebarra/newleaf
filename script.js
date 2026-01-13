@@ -37,7 +37,7 @@ function scrollToSection(sectionId) {
             if (heroWedding) {
                 // Set initial state only once
                 if (!heroWedding.dataset.animated) {
-                    gsap.set(['.wedding-subtitle', '.wedding-name-1', '.wedding-and', '.wedding-name-2', '.wedding-date'], {
+                    gsap.set(['.wedding-subtitle', '.wedding-name-1', '.wedding-and', '.wedding-name-2', '.wedding-date', '.wedding-countdown'], {
                         opacity: 0,
                         y: 30
                     });
@@ -81,18 +81,24 @@ function scrollToSection(sectionId) {
                         delay: 2.1,
                         ease: 'power2.out'
                     });
+                    gsap.to('.wedding-countdown', {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.8,
+                        delay: 2.4,
+                        ease: 'power2.out'
+                    });
                 }, 800);
             }
         } else {
             section.scrollIntoView({ behavior: 'smooth' });
         }
         // Start music when opening invitation
-        if (sectionId === 'hero2' && !isPlaying) {
+        if (sectionId === 'hero2' && !isPlaying && soundCloudWidget) {
             setTimeout(() => {
-                bgMusic.play().catch(err => {
-                    console.log('Audio play failed:', err);
-                });
+                soundCloudWidget.play();
                 isPlaying = true;
+                musicToggle.style.opacity = '1';
             }, 500);
         }
     }
@@ -100,32 +106,43 @@ function scrollToSection(sectionId) {
 
 // Music control
 let isPlaying = false;
-const bgMusic = document.getElementById('bgMusic');
+const bgMusicContainer = document.getElementById('bgMusic');
 const musicToggle = document.getElementById('musicToggle');
+let soundCloudWidget = null;
+
+// Initialize SoundCloud widget when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    if (window.SC) {
+        const iframe = bgMusicContainer.querySelector('iframe');
+        soundCloudWidget = SC.Widget(iframe);
+
+        soundCloudWidget.bind(SC.Widget.Events.READY, () => {
+            soundCloudWidget.setVolume(50); // Set volume to 50%
+        });
+    }
+});
 
 musicToggle.addEventListener('click', () => {
-    if (isPlaying) {
-        bgMusic.pause();
-        isPlaying = false;
-    } else {
-        bgMusic.play().catch(err => {
-            console.log('Audio play failed:', err);
-        });
-        isPlaying = true;
+    if (soundCloudWidget) {
+        if (isPlaying) {
+            soundCloudWidget.pause();
+            isPlaying = false;
+            musicToggle.style.opacity = '0.5';
+        } else {
+            soundCloudWidget.play();
+            isPlaying = true;
+            musicToggle.style.opacity = '1';
+        }
     }
 });
 
 // Pause music when tab is inactive, resume when active
 document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-        if (isPlaying && !bgMusic.paused) {
-            bgMusic.pause();
-        }
-    } else {
-        if (isPlaying && bgMusic.paused) {
-            bgMusic.play().catch(err => {
-                console.log('Audio play failed:', err);
-            });
+    if (soundCloudWidget) {
+        if (document.hidden && isPlaying) {
+            soundCloudWidget.pause();
+        } else if (!document.hidden && isPlaying) {
+            soundCloudWidget.play();
         }
     }
 });
@@ -241,6 +258,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// Countdown Timer
+function updateCountdown() {
+    const weddingDate = new Date('February 7, 2026 08:00:00').getTime();
+    const now = new Date().getTime();
+    const distance = weddingDate - now;
+
+    if (distance > 0) {
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById('days').textContent = String(days).padStart(2, '0');
+        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+    } else {
+        // Wedding day has arrived
+        document.getElementById('days').textContent = '00';
+        document.getElementById('hours').textContent = '00';
+        document.getElementById('minutes').textContent = '00';
+        document.getElementById('seconds').textContent = '00';
+    }
+}
+
+// Update countdown every second
+setInterval(updateCountdown, 1000);
+updateCountdown(); // Initial call
 
 // Prevent audio autoplay issues
 window.addEventListener('load', () => {
