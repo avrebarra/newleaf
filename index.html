@@ -117,6 +117,34 @@
             background: linear-gradient(180deg, #ffffff 0%, #f8f6f3 50%, #ffffff 100%);
         }
 
+        /* Paper texture for main content */
+        .site {
+            position: relative;
+            background: linear-gradient(180deg, #f8f6f3 0%, #ffffff 100%);
+        }
+
+        .site::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, .02) 2px, rgba(0, 0, 0, .02) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0, 0, 0, .02) 2px, rgba(0, 0, 0, .02) 4px),
+                repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(0, 0, 0, .01) 5px, rgba(0, 0, 0, .01) 10px);
+            mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 70%, transparent 100%);
+            -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 70%, transparent 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .site>* {
+            position: relative;
+            z-index: 2;
+        }
+
         /* Soft gradient transition before image sections */
         .gradient-transition {
             background: linear-gradient(180deg, #f8f6f3 0%, rgba(248, 246, 243, 0.5) 50%, transparent 100%);
@@ -130,6 +158,55 @@
         /* Beige accent border for color consistency */
         .beige-accent {
             border-top: 1px solid #f8f6f3;
+        }
+
+        /* Wide screen decorative lace borders */
+        @media (min-width: 768px) {
+
+            body::before,
+            body::after {
+                content: '';
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                width: calc((100vw - 768px) / 2);
+                z-index: 100;
+                pointer-events: none;
+            }
+
+            body::before {
+                left: 0;
+                background:
+                    /* Scalloped lace edge */
+                    radial-gradient(circle at 100% 50%, transparent 8px, #d4a574 8px, #d4a574 9px, transparent 9px),
+                    /* Dot pattern */
+                    radial-gradient(circle at calc(100% - 20px) 50%, #d4a574 2px, transparent 2px),
+                    radial-gradient(circle at calc(100% - 35px) 50%, #d4a574 1.5px, transparent 1.5px),
+                    /* Vertical lines */
+                    linear-gradient(to right, transparent calc(100% - 25px), rgba(212, 165, 116, 0.3) calc(100% - 25px), rgba(212, 165, 116, 0.3) calc(100% - 24px), transparent calc(100% - 24px)),
+                    linear-gradient(to right, transparent calc(100% - 15px), rgba(212, 165, 116, 0.5) calc(100% - 15px), rgba(212, 165, 116, 0.5) calc(100% - 13px), transparent calc(100% - 13px)),
+                    /* Base */
+                    linear-gradient(to right, transparent calc(100% - 45px), rgba(248, 246, 243, 0.5) calc(100% - 45px));
+                background-size: 100% 30px, 100% 30px, 100% 60px, 100% 100%, 100% 100%, 100% 100%;
+                background-position: 0 0, 0 15px, 0 0, 0 0, 0 0, 0 0;
+            }
+
+            body::after {
+                right: 0;
+                background:
+                    /* Scalloped lace edge */
+                    radial-gradient(circle at 0% 50%, transparent 8px, #d4a574 8px, #d4a574 9px, transparent 9px),
+                    /* Dot pattern */
+                    radial-gradient(circle at 20px 50%, #d4a574 2px, transparent 2px),
+                    radial-gradient(circle at 35px 50%, #d4a574 1.5px, transparent 1.5px),
+                    /* Vertical lines */
+                    linear-gradient(to left, transparent calc(100% - 25px), rgba(212, 165, 116, 0.3) calc(100% - 25px), rgba(212, 165, 116, 0.3) calc(100% - 24px), transparent calc(100% - 24px)),
+                    linear-gradient(to left, transparent calc(100% - 15px), rgba(212, 165, 116, 0.5) calc(100% - 15px), rgba(212, 165, 116, 0.5) calc(100% - 13px), transparent calc(100% - 13px)),
+                    /* Base */
+                    linear-gradient(to left, transparent calc(100% - 45px), rgba(248, 246, 243, 0.5) calc(100% - 45px));
+                background-size: 100% 30px, 100% 30px, 100% 60px, 100% 100%, 100% 100%, 100% 100%;
+                background-position: 0 0, 0 15px, 0 0, 0 0, 0 0, 0 0;
+            }
         }
     </style>
     <script>
@@ -157,7 +234,8 @@
     </script>
 </head>
 
-<body class="font-raleway text-gray-800 m-0 p-0">
+<body class="font-raleway text-gray-800 m-0 p-0"
+    style="background: linear-gradient(to bottom, #e8e6e0 0%, #f0f0f0 100%);">
     <div class="site w-full max-w-screen-md mx-auto shadow-none m-0 p-0">
         <!-- Hero Section -->
         <section id="hero" class="h-screen flex items-center justify-center text-primary text-center relative m-0">
@@ -257,7 +335,7 @@
         <div class="h-32 gradient-transition"></div>
 
         <!-- Bride Section -->
-        <section id="bride" class="relative h-screen flex items-end">
+        <section id="bride" class="relative h-screen flex items-end mx-2">
             <div class="absolute inset-0 bg-cover bg-center"
                 style="background-image: url('coupleinfo-bride_n33qe3.webp');"></div>
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
@@ -285,7 +363,7 @@
         </section>
 
         <!-- Groom Section -->
-        <section id="groom" class="relative h-screen flex items-end">
+        <section id="groom" class="relative h-screen flex items-end mx-2">
             <div class="absolute inset-0 bg-cover bg-center"
                 style="background-image: url('coupleinfo-groom_rsa6yp.webp');"></div>
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
@@ -313,24 +391,26 @@
         </section>
 
         <!-- Event Details Section -->
-        <section id="event" class="py-20 px-5 beige-accent">
-            <div class="max-w-6xl mx-auto px-5">
-                <h2 class="event-title scroll-fade-up text-center font-tangerine text-7xl mb-12 text-gray-700">Resepsi
-                    Pernikahan</h2>
+        <section id="event" class="relative py-32 px-5 mx-2">
+            <!-- Content -->
+            <div class="relative z-10 max-w-6xl mx-auto px-5">
+                <div
+                    class="event-card scroll-fade-up max-w-lg mx-auto bg-white/95 backdrop-blur-sm rounded-sm shadow-2xl">
+                    <div class="p-12 text-center">
+                        <h2 class="event-title scroll-fade-up font-tangerine text-6xl mb-8 text-gray-700">
+                            Resepsi<br>Pernikahan
+                        </h2>
 
-                <div class="event-card scroll-fade-up max-w-md mx-auto bg-[#f8f6f3]/30 rounded-lg">
-                    <div class="p-10 text-center">
-                        <div class="mb-8">
+                        <div class="mb-8 border-t border-b border-gray-300 py-6">
                             <p
-                                class="event-date scroll-fade-up text-3xl mb-4 font-cormorant font-normal tracking-wide text-gray-800">
+                                class="event-date scroll-fade-up text-2xl mb-3 font-cormorant font-normal tracking-wide text-gray-800">
                                 SABTU, 7 FEBRUARI<br>2026
                             </p>
-                            <p class="event-time scroll-fade-up text-lg mb-8 text-gray-700 font-raleway">16.00 - 18.00
+                            <p class="event-time scroll-fade-up text-lg mb-6 text-gray-700 font-raleway">16.00 - 18.00
                                 WIB</p>
                             <p
                                 class="event-venue scroll-fade-up text-base font-raleway mb-2 text-gray-800 uppercase tracking-wider">
-                                Villa
-                                Bluesteps
+                                Villa Bluesteps
                             </p>
                             <p class="event-address scroll-fade-up text-sm leading-relaxed text-gray-700 font-raleway">
                                 Jl. Boulevard No. 7, Jl. Karangjati No.<br>
@@ -350,23 +430,13 @@
 
                         <div class="flex flex-col gap-3">
                             <button
-                                class="w-full px-10 py-3 bg-gray-600 text-white cursor-pointer transition-all duration-300 text-sm tracking-wide flex items-center gap-2 justify-center hover:bg-secondary rounded"
+                                class="w-full px-10 py-4 bg-secondary text-white cursor-pointer transition-all duration-300 text-base font-semibold tracking-wide uppercase justify-center hover:bg-accent rounded-sm"
                                 onclick="openLocation()">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path
-                                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                                </svg>
-                                Buka di Google Maps
+                                Lihat Lokasi
                             </button>
                             <button
-                                class="w-full px-10 py-3 bg-gray-600 text-white cursor-pointer transition-all duration-300 text-sm tracking-wide flex items-center gap-2 justify-center hover:bg-secondary rounded"
+                                class="w-full px-10 py-4 bg-secondary text-white cursor-pointer transition-all duration-300 text-base font-semibold tracking-wide uppercase justify-center hover:bg-accent rounded-sm"
                                 onclick="addToCalendar()">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path
-                                        d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 4H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z" />
-                                </svg>
                                 Tambah ke Kalender
                             </button>
                         </div>
