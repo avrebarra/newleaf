@@ -29,6 +29,12 @@ function scrollToSection(sectionId) {
                         setTimeout(() => {
                             ScrollTrigger.refresh();
                         }, 100);
+
+                        // Show scroll indicator immediately after hero section is hidden
+                        setTimeout(() => {
+                            console.log('Calling showScrollIndicator after layout change');
+                            showScrollIndicator();
+                        }, 1500);
                     }
                 });
             }
@@ -287,6 +293,43 @@ function updateCountdown() {
 // Update countdown every second
 setInterval(updateCountdown, 1000);
 updateCountdown(); // Initial call
+
+// Scroll indicator functionality
+function showScrollIndicator() {
+    console.log('showScrollIndicator called'); // Debug log
+    const scrollIndicator = document.getElementById('scrollIndicator');
+    console.log('scrollIndicator element:', scrollIndicator); // Debug log
+
+    if (scrollIndicator) {
+        console.log('Adding visible class'); // Debug log
+        scrollIndicator.classList.add('visible');
+
+        // Hide indicator after 5 seconds or when user starts scrolling
+        const hideTimeout = setTimeout(() => {
+            console.log('Auto-hiding after 5 seconds'); // Debug log
+            hideScrollIndicator();
+        }, 5000);
+
+        // Hide when user scrolls
+        const onScroll = () => {
+            console.log('User scrolled, hiding indicator'); // Debug log
+            clearTimeout(hideTimeout);
+            hideScrollIndicator();
+            window.removeEventListener('scroll', onScroll);
+        };
+
+        window.addEventListener('scroll', onScroll);
+    } else {
+        console.error('scrollIndicator element not found');
+    }
+}
+
+function hideScrollIndicator() {
+    const scrollIndicator = document.getElementById('scrollIndicator');
+    if (scrollIndicator) {
+        scrollIndicator.classList.remove('visible');
+    }
+}
 
 // Prevent audio autoplay issues
 window.addEventListener('load', () => {
