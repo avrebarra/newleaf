@@ -132,16 +132,16 @@ document.addEventListener('visibilitychange', () => {
 
 // Location function
 function openLocation() {
-    window.open('https://maps.app.goo.gl/vHMNRuSapuvimdbk8', '_blank');
+    window.open('https://maps.app.goo.gl/hCq6YvtACDPix4ba9', '_blank');
 }
 
 // Add to Calendar function
 function addToCalendar() {
     const eventTitle = encodeURIComponent('The Wedding of Dhila & Avre');
-    const eventDetails = encodeURIComponent('Resepsi Pernikahan Dhila & Avre akan diadakan di Villa Bluesteps, Jl. Boulevard No. 7, Jl. Karangjati No. RT. 07, Gedongan, Bangunjiwo, Yogyakarta');
-    const location = encodeURIComponent('Villa Bluesteps, Jl. Boulevard No. 7, Jl. Karangjati No. RT. 07, Gedongan, Bangunjiwo, Yogyakarta');
-    const startDate = '20260207T090000Z'; // Feb 7, 2026, 16:00 WIB = 09:00 UTC
-    const endDate = '20260207T110000Z';   // Feb 7, 2026, 18:00 WIB = 11:00 UTC
+    const eventDetails = encodeURIComponent('Resepsi Pernikahan Fadhila Auliya Widiaputri & Avreghly Barra Al-Ilman. Kami mengundang Bapak/Ibu/Saudara/i untuk hadir memberikan doa dan restu. Lokasi: Hall Rumah Makan Primarasa, Lantai 2, Jl. Ahmad Yani No.166, Gayungan, Surabaya, Jawa Timur 60235');
+    const location = encodeURIComponent('Hall Rumah Makan Primarasa, Lantai 2, Jl. Ahmad Yani No.166, Gayungan, Kec. Gayungan, Surabaya, Jawa Timur 60235');
+    const startDate = '20260207T030000Z'; // Feb 7, 2026, 10:00 WIB = 03:00 UTC
+    const endDate = '20260207T043000Z';   // Feb 7, 2026, 11:30 WIB = 04:30 UTC
 
     const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&dates=${startDate}/${endDate}&details=${eventDetails}&location=${location}&ctz=Asia/Jakarta`;
 
