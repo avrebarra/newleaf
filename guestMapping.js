@@ -56,7 +56,7 @@ function applyGuestInfo() {
         guestNameElement.textContent = guestInfo.name;
     }
 
-    // Update the time in event section
+    // Update the time in event section (resepsi time only)
     const eventTimeElement = document.querySelector('.event-time');
     if (eventTimeElement) {
         eventTimeElement.textContent = guestInfo.time;
