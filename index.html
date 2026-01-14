@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth snap-y snap-proximity">
 
 <head>
     <meta charset="UTF-8">
@@ -337,7 +337,7 @@
     style="background: linear-gradient(to bottom, #f2f0ed 0%, #faf9f7 100%);">
     <div class="site w-full max-w-screen-md mx-auto shadow-none m-0 p-0">
         <!-- Hero Section -->
-        <section id="hero" class="h-screen flex items-center justify-center text-primary text-center relative m-0">
+        <section id="hero" class="h-screen flex items-center justify-center text-primary text-center relative m-0 ">
             <div class="z-10">
                 <div class="mb-6">
                     <p class="hero-greeting text-xs mb-3 font-raleway text-gray-600 tracking-widest">KEPADA YTH
@@ -376,7 +376,8 @@
         </button>
 
         <!-- Hero Wedding Names -->
-        <section id="hero-wedding" class="h-screen flex items-center justify-center px-5 text-center relative">
+        <section id="hero-wedding"
+            class="h-screen flex items-center justify-center px-5 text-center relative snap-start snap-always">
             <!-- Background overlay for better contrast -->
             <div class="absolute inset-0 bg-black/40"></div>
             <div class="max-w-6xl mx-auto px-5 relative z-10">
@@ -424,7 +425,8 @@
         </section>
 
         <!-- Hero 2 - Openers & Music -->
-        <section id="hero2" class="h-screen flex items-center justify-center px-5 text-center bg-[#f8f6f3]">
+        <section id="hero2"
+            class="h-screen flex items-center justify-center px-5 text-center bg-[#f8f6f3] snap-start snap-always">
             <div class="max-w-6xl mx-auto px-12">
                 <div class="mb-8 flex justify-center bismillah-img">
                     <img src="calligraphy-bismillah.svg" alt="Bismillah" class="h-12 md:h-15">
@@ -452,12 +454,16 @@
                     </h1>
                     <p class="couple-and scroll-fade-up font-tangerine text-4xl md:text-5xl text-gray-600">dan</p>
                     <h1
-                        class="couple-name-groom scroll-fade-up font-cormorant text-6xl md:text-7xl font-normal leading-tight text-primary mb-8">
+                        class="couple-name-groom scroll-fade-up font-cormorant text-6xl md:text-7xl font-normal leading-tight text-primary mb-1">
                         Avre Barra
                     </h1>
                     <p
+                        class="couple-invitation scroll-fade-up text-sm md:text-base leading-relaxed text-gray-600 font-raleway mb-8">
+                        beserta keluarga
+                    </p>
+                    <p
                         class="couple-invitation scroll-fade-up text-sm md:text-base leading-relaxed text-gray-600 font-raleway">
-                        beserta keluarga <br> mengundang kehadiran Bapak/Ibu/Saudara/i
+                        mengundang kehadiran Bapak/Ibu/Saudara/i
                         untuk memberikan do'a dan restu di acara pernikahan kami.
                     </p>
                 </div>
@@ -468,7 +474,7 @@
         <div class="h-32 gradient-transition"></div>
 
         <!-- Bride Section -->
-        <section id="bride" class="relative h-screen flex items-end mx-2">
+        <section id="bride" class="relative h-screen flex items-end m-8">
             <div class="absolute inset-0 bg-cover bg-center"
                 style="background-image: url('coupleinfo-bride_n33qe3.webp');"></div>
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
@@ -496,7 +502,7 @@
         </section>
 
         <!-- Groom Section -->
-        <section id="groom" class="relative h-screen flex items-end mx-2">
+        <section id="groom" class="relative h-screen flex items-end m-8">
             <div class="absolute inset-0 bg-cover bg-center"
                 style="background-image: url('coupleinfo-groom_rsa6yp.webp');"></div>
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
@@ -525,19 +531,23 @@
         </section>
 
         <!-- Event Details Section -->
-        <section id="event" class="relative py-32 px-5 mx-2">
+        <section id="event" class="relative py-32 px-5 bg-cover bg-center bg-fixed"
+            style="background-image: url('hero_kikwqj.webp');">
+            <!-- Background overlay -->
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/30 to-white"></div>
             <!-- Content -->
             <div class="relative z-10 max-w-6xl mx-auto">
                 <div
                     class="event-card scroll-fade-up max-w-lg mx-auto bg-white/95 backdrop-blur-sm rounded-sm shadow-2xl">
-                    <div class="py-16 p-8 md:p-14 text-center">
-                        <h2 class="event-title scroll-fade-up font-tangerine text-5xl md:text-6xl mb-8 text-gray-700">
+                    <div class="py-12 p-8 md:p-14 text-center">
+                        <h2
+                            class="event-title scroll-fade-up font-tangerine text-5xl md:text-7xl mb-8 text-gray-700 font-bold leading-[0.75]">
                             Akad & Resepsi<br>Pernikahan
                         </h2>
 
                         <div class="mb-8 border-t border-b border-gray-300 py-6">
                             <p
-                                class="event-date scroll-fade-up text-2xl mb-6 font-cormorant font-normal tracking-wide text-gray-800">
+                                class="event-date scroll-fade-up text-2xl mb-3 font-cormorant font-normal tracking-wide text-gray-800">
                                 SABTU <br> 7 FEBRUARI 2026
                             </p>
                             <div class="space-y-4 flex flex-col items-center justify-center text-center">
@@ -554,7 +564,7 @@
                             </div>
                             <div class="mt-8 pt-6 border-t border-gray-200">
                                 <p
-                                    class="event-venue scroll-fade-up text-base font-raleway mb-2 text-gray-800 uppercase tracking-wider">
+                                    class="event-venue scroll-fade-up text-sm font-semibold font-raleway mb-2 text-gray-800 uppercase tracking-wider">
                                     Hall Rumah Makan Primarasa, Lantai 2
                                 </p>
                                 <p
@@ -564,14 +574,14 @@
                                     Jawa Timur 60235
                                 </p>
                             </div>
-                        </div>
 
-                        <!-- Embedded Map -->
-                        <div class="mb-6 rounded-lg overflow-hidden shadow-lg">
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15828.845474926135!2d112.730468!3d-7.330142!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fb424d89ca41%3A0x59c31a204e07b94c!2sAyam%20Bakar%20Primarasa!5e0!3m2!1sen!2sid!4v1768307341730!5m2!1sen!2sid"
-                                width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <!-- Embedded Map -->
+                            <div class="mt-4 rounded-sm overflow-hidden shadow-lg">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15828.845474926135!2d112.730468!3d-7.330142!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fb424d89ca41%3A0x59c31a204e07b94c!2sAyam%20Bakar%20Primarasa!5e0!3m2!1sen!2sid!4v1768307341730!5m2!1sen!2sid"
+                                    width="400" height="250" style="border:0;" allowfullscreen="" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
                         </div>
 
                         <div class="flex flex-col gap-3">

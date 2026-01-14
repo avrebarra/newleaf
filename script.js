@@ -160,11 +160,43 @@ function openLocation() {
 
 // Add to Calendar function
 function addToCalendar() {
+    const guestInfo = getGuestInfo();
     const eventTitle = encodeURIComponent('The Wedding of Dhila & Avre');
-    const eventDetails = encodeURIComponent('Resepsi Pernikahan Fadhila Auliya Widiaputri & Avreghly Barra Al-Ilman. Kami mengundang Bapak/Ibu/Saudara/i untuk hadir memberikan doa dan restu. Lokasi: Hall Rumah Makan Primarasa, Lantai 2, Jl. Ahmad Yani No.166, Gayungan, Surabaya, Jawa Timur 60235');
     const location = encodeURIComponent('Hall Rumah Makan Primarasa, Lantai 2, Jl. Ahmad Yani No.166, Gayungan, Kec. Gayungan, Surabaya, Jawa Timur 60235');
-    const startDate = '20260207T030000Z'; // Feb 7, 2026, 10:00 WIB = 03:00 UTC
-    const endDate = '20260207T043000Z';   // Feb 7, 2026, 11:30 WIB = 04:30 UTC
+
+    let startDate, endDate, eventDetails;
+
+    if (guestInfo.akad) {
+        // Include Akad ceremony (08:00 - 09:00 WIB) and reception
+        startDate = '20260207T010000Z'; // Feb 7, 2026, 08:00 WIB = 01:00 UTC
+        endDate = '20260207T043000Z';   // Feb 7, 2026, 11:30 WIB = 04:30 UTC
+        eventDetails = encodeURIComponent('Akad & Resepsi Pernikahan Fadhila Auliya Widiaputri & Avreghly Barra Al-Ilman. Kami mengundang Bapak/Ibu/Saudara/i untuk hadir memberikan doa dan restu. Akad: 08.00-09.00 WIB, Resepsi: ' + guestInfo.time + '. Lokasi: Hall Rumah Makan Primarasa, Lantai 2, Jl. Ahmad Yani No.166, Gayungan, Surabaya, Jawa Timur 60235');
+    } else {
+        // Reception only based on guest's session
+        const sessionTimes = {
+            '1': { start: '20260207T030000Z', end: '20260207T043000Z' }, // 10:00-11:30 WIB
+            '2': { start: '20260207T043000Z', end: '20260207T053000Z' }, // 11:30-12:30 WIB
+            'default': { start: '20260207T030000Z', end: '20260207T043000Z' } // 10:00-11:30 WIB
+        };
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const code = urlParams.get('code');
+        let session = 'default';
+
+        if (code) {
+            try {
+                const data = JSON.parse(atob(code));
+                session = data.session || 'default';
+            } catch (e) {
+                session = 'default';
+            }
+        }
+
+        const sessionTime = sessionTimes[session] || sessionTimes['default'];
+        startDate = sessionTime.start;
+        endDate = sessionTime.end;
+        eventDetails = encodeURIComponent('Resepsi Pernikahan Fadhila Auliya Widiaputri & Avreghly Barra Al-Ilman. Kami mengundang Bapak/Ibu/Saudara/i untuk hadir memberikan doa dan restu. Waktu: ' + guestInfo.time + '. Lokasi: Hall Rumah Makan Primarasa, Lantai 2, Jl. Ahmad Yani No.166, Gayungan, Surabaya, Jawa Timur 60235');
+    }
 
     const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&dates=${startDate}/${endDate}&details=${eventDetails}&location=${location}&ctz=Asia/Jakarta`;
 
